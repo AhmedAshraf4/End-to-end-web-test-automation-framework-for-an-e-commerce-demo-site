@@ -24,9 +24,10 @@ jobs:
         uses: browser-actions/setup-chrome@v1
 
       - name: Run smoke tests
-        run: robot --variable HEADLESS:True -i smoke -d results tests/
+        run: robot --variablefile resources/ci.py -i smoke -d results tests/
 
       - name: Upload smoke results
+        if: always()
         uses: actions/upload-artifact@v4
         with:
           name: robot-smoke-results
@@ -52,9 +53,10 @@ jobs:
         uses: browser-actions/setup-chrome@v1
 
       - name: Run regression tests
-        run: robot --variable HEADLESS:True -i regression -d results tests/
+        run: robot --variablefile resources/ci.py -i regression -d results tests/
 
       - name: Upload regression results
+        if: always()
         uses: actions/upload-artifact@v4
         with:
           name: robot-regression-results
