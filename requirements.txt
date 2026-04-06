@@ -1,3 +1,5 @@
 robotframework
 robotframework-seleniumlibrary
 webdriver-manager
+allure-robotframework
+flask

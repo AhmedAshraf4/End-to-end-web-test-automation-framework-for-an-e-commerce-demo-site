@@ -13,6 +13,7 @@ Add Item To Cart
     Login With Credentials    ${VALID_USERNAME}    ${VALID_PASSWORD}
     Verify Successful Login
     Add Backpack To Cart
+    Verify Cart Badge Count    1
     Open Cart
     Verify Cart Has Backpack
 
@@ -21,6 +22,7 @@ Remove Item From Cart
     Login With Credentials    ${VALID_USERNAME}    ${VALID_PASSWORD}
     Verify Successful Login
     Add Backpack To Cart
+    Verify Cart Badge Count    1
     Remove Backpack From Cart
     Open Cart
     Verify Cart Is Empty

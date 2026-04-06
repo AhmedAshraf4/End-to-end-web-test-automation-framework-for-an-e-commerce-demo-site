@@ -1,21 +1,26 @@
 *** Settings ***
 Library     SeleniumLibrary
 Resource    common.robot
+Resource    locators/products_locators.robot
 
 *** Keywords ***
 Add Backpack To Cart
-    Click Button Safely    id:add-to-cart-sauce-labs-backpack
+    Click Button Safely    ${ADD_BACKPACK_BUTTON}
 
 Remove Backpack From Cart
-    Click Button Safely    id:remove-sauce-labs-backpack
+    Click Button Safely    ${REMOVE_BACKPACK_BUTTON}
 
 Open Cart
-    Click Element Safely               class:shopping_cart_link
+    Click Element Safely               ${CART_LINK}
     Wait Until Location Contains       cart.html    10s
-    Wait Until Element Is Visible      id:checkout    10s
+    Wait Until Element Is Visible      ${CART_CHECKOUT_BUTTON}    10s
 
 Verify Cart Has Backpack
-    Wait Until Element Is Visible    xpath://div[text()='Sauce Labs Backpack']    10s
+    Wait Until Element Is Visible    ${BACKPACK_ITEM_NAME}    10s
 
 Verify Cart Is Empty
-    Page Should Not Contain Element    xpath://div[text()='Sauce Labs Backpack']
+    Page Should Not Contain Element    ${BACKPACK_ITEM_NAME}
+
+Verify Cart Badge Count
+    [Arguments]    ${expected_count}
+    Element Text Should Be    ${CART_BADGE}    ${expected_count}

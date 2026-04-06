@@ -14,11 +14,14 @@ Complete Checkout
     Login With Credentials    ${VALID_USERNAME}    ${VALID_PASSWORD}
     Verify Successful Login
     Add Backpack To Cart
+    Verify Cart Badge Count    1
     Open Cart
     Verify Cart Has Backpack
     Click Checkout
     Enter Checkout Information    ${FIRSTNAME}    ${LASTNAME}    ${POSTALCODE}
     Verify Checkout Overview Page
+    Verify Checkout Overview Has Backpack
+    Verify Item Total Is Displayed
     Finish Checkout
     Verify Checkout Complete
 
