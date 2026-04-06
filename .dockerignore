@@ -1,0 +1,13 @@
+.venv/
+.idea/
+__pycache__/
+*.pyc
+results/
+log.html
+report.html
+output.xml
+allure-results/
+allure-report/
+.git/
+.gitignore
+README.md
