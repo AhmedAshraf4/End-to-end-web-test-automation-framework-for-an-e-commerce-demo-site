@@ -3,3 +3,4 @@ robotframework-seleniumlibrary
 webdriver-manager
 allure-robotframework
 flask
+robotframework-requests
