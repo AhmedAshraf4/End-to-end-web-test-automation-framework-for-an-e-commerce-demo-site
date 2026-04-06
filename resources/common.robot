@@ -17,3 +17,27 @@ Open Browser To Login Page
 
 Close Browser Session
     Close Browser
+
+Click Element Safely
+    [Arguments]    ${locator}
+    Wait Until Element Is Visible    ${locator}    10s
+    Wait Until Element Is Enabled    ${locator}    10s
+    Scroll Element Into View         ${locator}
+    Click Element                    ${locator}
+
+Click Button Safely
+    [Arguments]    ${locator}
+    Wait Until Element Is Visible    ${locator}    10s
+    Wait Until Element Is Enabled    ${locator}    10s
+    Scroll Element Into View         ${locator}
+    Click Button                     ${locator}
+
+Input Text Safely
+    [Arguments]    ${locator}    ${text}
+    Wait Until Element Is Visible    ${locator}    10s
+    Clear Element Text               ${locator}
+    Input Text                       ${locator}    ${text}
+
+Page Should Be Loaded
+    [Arguments]    ${locator}
+    Wait Until Element Is Visible    ${locator}    10s
