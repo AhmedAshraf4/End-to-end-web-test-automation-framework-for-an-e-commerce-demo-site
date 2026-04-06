@@ -21,29 +21,9 @@ Open Browser To Login Page
     Call Method    ${chrome_options}    add_experimental_option    prefs    ${prefs}
 
     Open Browser    ${URL}    chrome    options=${chrome_options}
-    Maximize Browser Window
+    Set Window Size    1920    1080
     Set Selenium Timeout    10s
     Register Keyword To Run On Failure    Capture Page Screenshot
 
 Close Browser Session
     Close Browser
-
-Click Element Safely
-    [Arguments]    ${locator}
-    Wait Until Element Is Visible    ${locator}    10s
-    Wait Until Element Is Enabled    ${locator}    10s
-    Scroll Element Into View         ${locator}
-    Click Element                    ${locator}
-
-Click Button Safely
-    [Arguments]    ${locator}
-    Wait Until Element Is Visible    ${locator}    10s
-    Wait Until Element Is Enabled    ${locator}    10s
-    Scroll Element Into View         ${locator}
-    Click Button                     ${locator}
-
-Input Text Safely
-    [Arguments]    ${locator}    ${text}
-    Wait Until Element Is Visible    ${locator}    10s
-    Clear Element Text               ${locator}
-    Input Text                       ${locator}    ${text}

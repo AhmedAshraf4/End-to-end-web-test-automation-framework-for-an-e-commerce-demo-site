@@ -24,7 +24,7 @@ jobs:
         uses: browser-actions/setup-chrome@v1
 
       - name: Run smoke tests
-        run: robot -V resources/ci_variables.robot -i smoke -d results tests/
+        run: robot --variable HEADLESS:True -i smoke -d results tests/
 
       - name: Upload smoke results
         uses: actions/upload-artifact@v4
@@ -52,7 +52,7 @@ jobs:
         uses: browser-actions/setup-chrome@v1
 
       - name: Run regression tests
-        run: robot -V resources/ci_variables.robot -i regression -d results tests/
+        run: robot --variable HEADLESS:True -i regression -d results tests/
 
       - name: Upload regression results
         uses: actions/upload-artifact@v4
