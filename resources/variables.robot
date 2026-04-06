@@ -1,9 +1,7 @@
-*** Settings ***
-Resource    env/dev.robot
-
 *** Variables ***
-${URL}                 ${BASE_URL}
+${URL}                 https://www.saucedemo.com/
 ${BROWSER}             chrome
+${HEADLESS}            ${False}
 
 ${VALID_USERNAME}      standard_user
 ${VALID_PASSWORD}      secret_sauce

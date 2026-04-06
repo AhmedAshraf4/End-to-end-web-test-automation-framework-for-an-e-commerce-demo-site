@@ -6,35 +6,6 @@ on:
 
 jobs:
   smoke-tests:
-    if: github.event_name == 'push'
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-
-      - name: Set up Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: "3.11.9"
-
-      - name: Install dependencies
-        run: pip install -r requirements.txt
-
-      - name: Install Chrome
-        uses: browser-actions/setup-chrome@v1
-
-      - name: Run smoke tests
-        run: robot -i smoke -d results tests/
-
-      - name: Upload smoke results
-        uses: actions/upload-artifact@v4
-        with:
-          name: robot-smoke-results
-          path: results/
-
-  regression-tests:
-    if: github.event_name == 'pull_request'
     runs-on: ubuntu-latest
 
     steps:
@@ -52,8 +23,36 @@ jobs:
       - name: Install Chrome
         uses: browser-actions/setup-chrome@v1
 
+      - name: Run smoke tests
+        run: robot -V resources/ci_variables.robot -i smoke -d results tests/
+
+      - name: Upload smoke results
+        uses: actions/upload-artifact@v4
+        with:
+          name: robot-smoke-results
+          path: results/
+
+  regression-tests:
+    runs-on: ubuntu-latest
+    needs: smoke-tests
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Install Chrome
+        uses: browser-actions/setup-chrome@v1
+
       - name: Run regression tests
-        run: robot -i regression -d results tests/
+        run: robot -V resources/ci_variables.robot -i regression -d results tests/
 
       - name: Upload regression results
         uses: actions/upload-artifact@v4
