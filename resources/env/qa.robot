@@ -1,0 +1,3 @@
+*** Variables ***
+${BASE_URL}    https://www.saucedemo.com/
+${ENV_NAME}    qa
